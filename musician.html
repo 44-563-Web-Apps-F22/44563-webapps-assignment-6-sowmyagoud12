@@ -28,6 +28,9 @@
 
 
 <p id="guess">This text will be replaced </p>
+<div class="container">
+    <img id="img" src="mayflies2.jpg" class="bordered mx-auto d-block" alt="Mayflies" width="100px" hight="100px" onclick="swapImage()">
+</div>
 
 <script> 
 
@@ -62,6 +65,23 @@ function checkGuess()
     }   
        
     out.innerHTML = "Correct guesses "+correct + " Wrong guesses "+ wrong
+}
+
+let useImage = 1;
+function swapImage()
+{
+    switch(useImage)
+    {
+        case 1: document.getElementById("img").src = "mayflies2.jpg";
+        useImage++;
+        break;
+        case 2: document.getElementById("img").src = "Antlions.jpg";
+        useImage++;
+        break;
+        case 3: document.getElementById("img").src = "Dragonfly.jpg";
+        useImage++;
+        break;
+    }
 }
 </script>
 
