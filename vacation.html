@@ -22,36 +22,26 @@
    <input type="button" class="btn btn-success" value="Select a vacation" onclick="selectVacation()">
     </form>    
     <p id="result1">This text will be replaced </p>
-</div>
+
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <div class="form-group">
+    <label for="city">Enter the city</label>
+    <input type ="text" id="city" name="city"> <br>
+</div>
+<div class="form-group">
+    <label for="price">Enter Price</label>
+    <input type ="text" id="price" name="price"> <br>
+</div>
+<input type="button" class="btn btn-warning" value="Update the vacation" onclick="updateVacation()">
 </form>
 
 
 <p id="result">This text will be replaced </p>
-
+</div>
 <script> 
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
+
 
 var my_vacation = {};
 
@@ -87,6 +77,17 @@ function selectVacation() {
         my_vacation.resort = false;
     }
     document.getElementById("result1").innerHTML = JSON.stringify(my_vacation)
+}
+
+
+function updateVacation()
+{
+let city = document.getElementById("city").value;
+let price = document.getElementById("price").value;
+
+my_vacation["city"] = city;
+my_vacation["price"]  = price;
+document.getElementById("result").innerHTML = JSON.stringify(my_vacation)
 }
 </script>
 
