@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+ <head><title>Vacation</title></head>
+<body>
+    
+<h1>Sowmya Maddikunta selects a vacation</h1>
+<h2>Getting input</h2>
+<div class="container">
+    <form>
+   <div class="form-group">
+    <input type="checkbox" id="air" name="vacation" value="true">
+    <label for="air">Travel by Air </label><br>
+   </div>
+   <div class="form-group">
+    <input type="checkbox" id="domestic" name="vacation" value="true">
+    <label for="air">Domestic</label><br>
+   </div>
+   <div class="form-group">
+    <input type="checkbox" id="resort" name="vacation" value="false">
+    <label for="air">Resort</label><br>
+   </div>
+   <input type="button" class="btn btn-success" value="Select a vacation" onclick="selectVacation()">
+    </form>    
+    <p id="result1">This text will be replaced </p>
+</div>
+
+<form>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+
+var my_vacation = {};
+
+function selectVacation() {
+
+    my_vacation = {};
+    let air = document.getElementById("air").checked;
+    let domestic = document.getElementById("domestic").checked;
+    let resort = document.getElementById("resort").checked;
+
+    if(air)
+    {
+        my_vacation.air = true;
+    }
+    else
+    {
+        my_vacation.air = false;
+    }
+    if(domestic)
+    {
+        my_vacation.domestic = true;
+    }
+    else
+    {
+        my_vacation.domestic = false;
+    }
+    if(resort)
+    {
+        my_vacation.resort = true;
+    }
+    else
+    {
+        my_vacation.resort = false;
+    }
+    document.getElementById("result1").innerHTML = JSON.stringify(my_vacation)
+}
+</script>
+
+</body>
+</html> 
