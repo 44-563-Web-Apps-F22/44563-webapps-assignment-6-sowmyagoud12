@@ -11,6 +11,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 </head>
 <body>
+    
 <h1>Musician guess by Sowmya Maddikunta</h1>
 <h2>Getting input</h2>
 <div class="container">
@@ -21,7 +22,7 @@
         <label for="form1_nick">What is your nickname </label><br>
         <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br><br>
     
-        <input type="button" onclick="resolveForm()" value="Get values from form">
+        <input type="button" class="btn btn-info" onclick="resolveForm()" value="Get values from form">
     </form>
     <p id="result">This text will be replaced </p>
 </div>
@@ -35,7 +36,7 @@
         <label for="form1_guess">Guess the musician </label><br>
         <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
     <br>
-        <input type="button" onclick="checkGuess()" value="Check the guess">
+        <input type="button" onclick="checkGuess()" class="btn btn-success" value="Check the guess">
     </form>
     <p id="guess">This text will be replaced </p>
 </div>
@@ -46,6 +47,7 @@
 <div class="container">
     <img id="img" src="mayflies2.jpg" class="bordered mx-auto d-block" alt="Mayflies" width="100px" hight="100px" onclick="swapImage()">
 </div>
+<br>
 
 <script> 
 
@@ -64,6 +66,8 @@ function resolveForm (){
 }
 let correct =0;
 let wrong = 0;
+let correctNew = 0;
+let wrongNew = 0;
 function checkGuess()
 {
     name = document.getElementById("form1_name").value
@@ -73,13 +77,25 @@ function checkGuess()
     {
         confirmed = confirm("You got it right")
         correct += 1
+        correctNew = correctNew +1
+        out.innerHTML = "Correct guesses "+correct + " Wrong guesses "+ wrong
     }
     else{
         confirmed = confirm("Wrong Musician")   
-        wrong += 1     
+        wrong += 1  
+        wrongNew = wrongNew +1   
+        if(correctNew==0 && wrongNew%3==0 && wrongNew!=0) {
+                alert("Sorry, game over.");
+                wrong = 0  
+                correct = 0
+            } else if(correctNew>0){
+                correctNew=0
+                wrongNew=0
+            }
+            out.innerHTML = "Correct guesses "+correct + " Wrong guesses "+ wrong
     }   
        
-    out.innerHTML = "Correct guesses "+correct + " Wrong guesses "+ wrong
+   
 }
 
 let useImage = 1;
