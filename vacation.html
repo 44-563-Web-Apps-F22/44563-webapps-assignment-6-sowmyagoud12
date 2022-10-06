@@ -46,40 +46,30 @@
 var my_vacation = {};
 
 function selectVacation() {
-
     my_vacation = {};
     let air = document.getElementById("air").checked;
     let domestic = document.getElementById("domestic").checked;
     let resort = document.getElementById("resort").checked;
-
     if(air)
-    {
-        my_vacation.air = true;
+    {  my_vacation.air = true;
     }
     else
-    {
-        my_vacation.air = false;
+    { my_vacation.air = false;
     }
     if(domestic)
-    {
-        my_vacation.domestic = true;
+    { my_vacation.domestic = true;
     }
     else
-    {
-        my_vacation.domestic = false;
+    {my_vacation.domestic = false;
     }
     if(resort)
-    {
-        my_vacation.resort = true;
+    {my_vacation.resort = true;
     }
     else
-    {
-        my_vacation.resort = false;
+    {my_vacation.resort = false;
     }
     document.getElementById("result1").innerHTML = JSON.stringify(my_vacation)
 }
-
-
 function updateVacation()
 {
 let city = document.getElementById("city").value;
